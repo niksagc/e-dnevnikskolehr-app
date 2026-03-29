@@ -1,13 +1,8 @@
-import Link from 'next/link';
-
-export default function HomePage() {
+export default function DashboardPage() {
   return (
-    <main className="container mx-auto py-10">
-      <h1 className="text-4xl font-bold mb-4">e-Dnevnik</h1>
-      <p className="mb-4">Dobrodošli u sustav e-Dnevnik.</p>
-      <Link href="/ocjene" className="text-blue-500 hover:underline">
-        Idi na popis ocjena
-      </Link>
-    </main>
+    <div>
+      <h2 className="text-lg font-bold mb-4">Dashboard</h2>
+      <p className="text-sm text-gray-600">Dobrodošli u e-Dnevnik. Odaberite kategoriju iz navigacije.</p>
+    </div>
   );
 }
