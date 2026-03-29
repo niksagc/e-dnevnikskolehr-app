@@ -2,9 +2,9 @@ export default function Modal({ isOpen, onClose, children }: { isOpen: boolean, 
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-      <div className="bg-white p-6 rounded shadow-lg w-96">
+      <div className="bg-white p-4 w-96">
         {children}
-        <button onClick={onClose} className="mt-4 text-sm text-gray-500">Zatvori</button>
+        <button onClick={onClose} className="mt-2 text-xs text-gray-600 underline">Zatvori</button>
       </div>
     </div>
   );

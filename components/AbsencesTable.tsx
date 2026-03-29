@@ -8,20 +8,20 @@ const absences = [
 
 export default function AbsencesTable() {
   return (
-    <table className="w-full border-collapse border border-gray-300 text-sm">
-      <thead className="bg-gray-100">
+    <table className="w-full border-collapse border border-gray-400 text-xs">
+      <thead className="bg-gray-200">
         <tr>
-          <th className="border border-gray-300 p-2 text-left">Učenik</th>
-          <th className="border border-gray-300 p-2 text-left">Datum</th>
-          <th className="border border-gray-300 p-2 text-left">Status</th>
+          <th className="border border-gray-400 p-1 text-left">Učenik</th>
+          <th className="border border-gray-400 p-1 text-left">Datum</th>
+          <th className="border border-gray-400 p-1 text-left">Status</th>
         </tr>
       </thead>
       <tbody>
         {absences.map(a => (
-          <tr key={a.id} className="hover:bg-blue-50">
-            <td className="border border-gray-300 p-2">{a.name}</td>
-            <td className="border border-gray-300 p-2">{a.date}</td>
-            <td className="border border-gray-300 p-2"><Badge status={a.status as any} /></td>
+          <tr key={a.id} className="hover:bg-gray-50">
+            <td className="border border-gray-400 p-1">{a.name}</td>
+            <td className="border border-gray-400 p-1">{a.date}</td>
+            <td className="border border-gray-400 p-1"><Badge status={a.status as any} /></td>
           </tr>
         ))}
       </tbody>

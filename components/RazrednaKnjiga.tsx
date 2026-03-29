@@ -15,28 +15,28 @@ export default function RazrednaKnjiga() {
   };
 
   return (
-    <table className="w-full border-collapse border border-gray-300 text-sm">
-      <thead className="bg-gray-100">
+    <table className="w-full border-collapse border border-gray-400 text-xs">
+      <thead className="bg-gray-200">
         <tr>
-          <th className="border border-gray-300 p-2 text-left">Učenik</th>
-          <th className="border border-gray-300 p-2">Matematika</th>
-          <th className="border border-gray-300 p-2">Engleski</th>
-          <th className="border border-gray-300 p-2">Fizika</th>
-          <th className="border border-gray-300 p-2">Prosjek</th>
+          <th className="border border-gray-400 p-1 text-left">Učenik</th>
+          <th className="border border-gray-400 p-1">Matematika</th>
+          <th className="border border-gray-400 p-1">Engleski</th>
+          <th className="border border-gray-400 p-1">Fizika</th>
+          <th className="border border-gray-400 p-1">Prosjek</th>
         </tr>
       </thead>
       <tbody>
         {data.map(s => {
           const avg = (s.grades.mat + s.grades.eng + s.grades.fiz) / 3;
           return (
-            <tr key={s.id} className="hover:bg-blue-50">
-              <td className="border border-gray-300 p-2">{s.name}</td>
+            <tr key={s.id} className="hover:bg-gray-50">
+              <td className="border border-gray-400 p-1">{s.name}</td>
               {['mat', 'eng', 'fiz'].map(sub => (
-                <td key={sub} className="border border-gray-300 p-1">
-                  <input type="number" min="1" max="5" value={s.grades[sub as keyof typeof s.grades]} onChange={(e) => updateGrade(s.id, sub, e.target.value)} className="w-full text-center bg-transparent" />
+                <td key={sub} className="border border-gray-400 p-0">
+                  <input type="number" min="1" max="5" value={s.grades[sub as keyof typeof s.grades]} onChange={(e) => updateGrade(s.id, sub, e.target.value)} className="w-10 h-6 text-center bg-transparent" />
                 </td>
               ))}
-              <td className="border border-gray-300 p-2 text-center font-bold">{avg.toFixed(2)}</td>
+              <td className="border border-gray-400 p-1 text-center font-bold">{avg.toFixed(2)}</td>
             </tr>
           );
         })}

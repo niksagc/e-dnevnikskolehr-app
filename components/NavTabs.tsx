@@ -16,13 +16,13 @@ const tabs = [
 export default function NavTabs() {
   const pathname = usePathname();
   return (
-    <nav className="bg-white border-b border-gray-200">
-      <div className="container mx-auto max-w-[1200px] flex gap-6 px-6">
+    <nav className="bg-white border-b border-gray-400">
+      <div className="container mx-auto max-w-[1100px] flex gap-2 px-2">
         {tabs.map((tab) => (
           <Link
             key={tab.name}
             href={tab.href}
-            className={`py-3 text-sm ${pathname === tab.href ? 'border-b-2 border-blue-600 font-bold text-blue-600' : 'text-gray-600 hover:text-blue-600'}`}
+            className={`py-1 px-2 text-xs ${pathname === tab.href ? 'border-b-2 border-[#1e40af] font-bold text-[#1e40af]' : 'text-gray-700 hover:text-[#1e40af]'}`}
           >
             {tab.name}
           </Link>

@@ -4,5 +4,5 @@ export default function Badge({ status }: { status: 'pending' | 'justified' | 'u
     justified: 'bg-green-100 text-green-800',
     unjustified: 'bg-red-100 text-red-800',
   };
-  return <span className={`px-2 py-1 rounded text-xs font-semibold ${colors[status]}`}>{status.toUpperCase()}</span>;
+  return <span className={`px-1 py-0 rounded-sm text-[10px] font-semibold ${colors[status]}`}>{status.toUpperCase()}</span>;
 }

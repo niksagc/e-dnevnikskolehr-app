@@ -1,0 +1,42 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper Functions
+    function isAuthenticated() { return request.auth != null; }
+    function isOwner(userId) { return isAuthenticated() && request.auth.uid == userId; }
+    
+    // Admin check
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "nduric673@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    // Role check
+    function isClassTeacher(classId) {
+      return isAuthenticated() && exists(/databases/$(database)/documents/class_teachers/$(request.auth.uid + '_' + classId));
+    }
+
+    // Collections
+    match /class_teachers/{id} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    match /final_grades/{id} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin() || isClassTeacher(resource.data.classId);
+    }
+
+    match /class_locks/{classId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin() || isClassTeacher(classId);
+    }
+
+    match /report_cards/{id} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin() || isClassTeacher(resource.data.classId);
+    }
+  }
+}
